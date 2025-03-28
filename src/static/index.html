@@ -31,6 +31,10 @@
               const card = document.createElement('div');
               card.className = 'activity-card';
 
+              const participantsList = activityDetails.participants
+                .map(participant => `<li>${participant}</li>`)
+                .join('');
+
               card.innerHTML = `
                 <h4>${activityName}</h4>
                 <p>${activityDetails.description}</p>
@@ -38,8 +42,8 @@
                 <p><strong>Max Participants:</strong> ${activityDetails.max_participants}</p>
                 <div>
                   <strong>Participants:</strong>
-                  <ul>
-                    ${activityDetails.participants.map(participant => `<li>${participant}</li>`).join('')}
+                  <ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">
+                    ${participantsList || '<li>None</li>'}
                   </ul>
                 </div>
               `;
